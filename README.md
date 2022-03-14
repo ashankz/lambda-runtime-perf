@@ -24,18 +24,18 @@ To setup, navigate to individual runtime folder and follow the README.
  
 Here are the stats. See '90th Perc', ‘Average’ and ‘Transactions/sec’ columns:
 
-![Performance run statistics](https://github.com/ashankz/lambda-runtimes-perf/main/tests/jmeter/images/testrun-20220314.png?raw=true)
+![Performance run statistics](https://github.com/ashankz/lambda-runtimes-perf/blob/main/tests/jmeter/images/testrun-20220314.png?raw=true)
 
  
 Performance tests were done with identical load structure and payload - using JMeter:
  
 
-![JMeter run](https://github.com/ashankz/lambda-runtimes-perf/main/tests/jmeter/images/jmeter-run-20220314.png?raw=true)
+![JMeter run](https://github.com/ashankz/lambda-runtimes-perf/blob/main/tests/jmeter/images/jmeter-run-20220314.png?raw=true)
 
 
 Lambda Package size:
 
-![JMeter run](https://github.com/ashankz/lambda-runtimes-perf/main/tests/jmeter/images/lambda-size-20220314.png?raw=true)
+![JMeter run](https://github.com/ashankz/lambda-runtimes-perf/blob/main/tests/jmeter/images/lambda-size-20220314.png?raw=true)
 
 
 
