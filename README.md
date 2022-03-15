@@ -2,11 +2,11 @@
  Performance comparison of Lambda runtimes - NodeJS, Python and Go
 
 
-Project to run performance tests on Lambda/API Gateway with different language runtimes: Python, Node and Go. Few points:
+This repo hosts AWS SAM based serverless projects to run performance tests on Lambda/API Gateway with different language runtimes: Python, Node and Go. 
 
-To setup, navigate to individual runtime folder and follow the README.
+To run and deploy the serverless stacks, navigate to individual language runtime folder and follow the steps in README.
 
-## Notes on test setup:
+## Notes on test setup
  
  - Each of these runtimes is deployed to AWS using [AWS Serverless Application Model (SAM)](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html). A deployment consists of a Lambda, an API gateway and a DynamoDB table. These are completely separate from each other – no sharing of tables or API gateway between runtimes.
  - Code snippets were taken from AWS documentation, then modified to make them identical. http://docs.aws.amazon.com/en_us/lambda/latest/dg/services-apigateway-tutorial.html
