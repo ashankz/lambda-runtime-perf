@@ -1,10 +1,12 @@
-# aws-lambda-runtime-perfcomp
+# aws lambda language runtime performance comparison
  Performance comparison of Lambda runtimes - NodeJS, Python and Go
 
 
 This repo hosts AWS SAM based serverless projects to run performance tests on Lambda/API Gateway with different language runtimes: Python, Node and Go. 
+The tests are conducted in as identical manner as possible. Each stack has a simple api endpoint that takes in a json item and writes it to a DynamoDB table.
+Lambda memory and DynamodB configurations are kept identical.
 
-To run and deploy the serverless stacks, navigate to individual language runtime folder and follow the steps in README.
+To deploy the serverless stacks and run tests, navigate to individual language runtime and tests folder, and follow the steps in README.
 
 ## Notes on test setup
  
@@ -18,7 +20,6 @@ To run and deploy the serverless stacks, navigate to individual language runtime
 
  - Go runtime seems to give a little better performance than others, in terms of response times and throughput
  - Node runtime seems to perform better than Python.
- - AWS documentation on Go is significantly less than Python/Node.
  - Package size of Go runtime is large: ~ 6 MB, compared to a few hundred bytes for Python/Node. 
  
  
