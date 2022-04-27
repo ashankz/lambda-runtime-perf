@@ -36,9 +36,6 @@ Resources:
       TableName: poc-items-python
 
 Outputs:
-  ApiEndpoint:
-    Description: "The invoke URL for our HTTP API"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/items"
-  Function:
-    Description: "DynamoDB handler function ARN"
-    Value: !GetAtt DDBHandlerFunction.Arn
+  ApiDomain:
+    Description: "HTTP API domain for Python"
+    Value: !Sub "${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
