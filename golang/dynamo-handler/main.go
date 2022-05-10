@@ -3,8 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"log"
 	"os"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -28,8 +26,21 @@ type RequestBody struct {
 	Payload   Payload
 }
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	cfg, err := config.LoadDefaultConfig(context.TODO(), func(o *config.LoadOptions) error {
+var tableName string
+var svc *dynamodb.Client
+var cfg aws.Config
+
+func init() {
+	var tableVarExists bool
+
+	tableName, tableVarExists = os.LookupEnv("TABLE_NAME")
+	if !tableVarExists {
+		tableName = "poc-items-go"
+	}
+
+	var err error
+
+	cfg, err = config.LoadDefaultConfig(context.TODO(), func(o *config.LoadOptions) error {
 		o.Region = os.Getenv("AWS_REGION")
 		return nil
 	})
@@ -37,8 +48,13 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		panic(err)
 	}
 
-	requestJson, _ := json.Marshal(request)
-	log.Printf("EVENT: %s", requestJson)
+	svc = dynamodb.NewFromConfig(cfg)
+}
+
+func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+
+	//requestJson, _ := json.Marshal(request)
+	//log.Printf("EVENT: %s", requestJson)
 
 	var body RequestBody
 	json.Unmarshal([]byte(request.Body), &body)
@@ -49,19 +65,13 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	if body.Operation == "create" {
 
-		tableName, tableVarExists := os.LookupEnv("TABLE_NAME")
-		if !tableVarExists {
-			tableName = "poc-items-go"
-		}
-
 		itemJson, marshallErr := attributevalue.MarshalMap(item)
 		if marshallErr != nil {
-			panic(fmt.Sprintf("failed to DynamoDB marshal Record, %v", marshallErr))
+			panic(marshallErr)
 		}
 
 		//fmt.Println("marshelled item:", itemJson)
 
-		svc := dynamodb.NewFromConfig(cfg)
 		_, err := svc.PutItem(context.TODO(), &dynamodb.PutItemInput{
 			TableName: aws.String(tableName),
 			Item:      itemJson,

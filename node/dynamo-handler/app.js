@@ -1,7 +1,8 @@
 console.log('Loading function');
 
 var AWS = require('aws-sdk');
-var dynamo = new AWS.DynamoDB.DocumentClient();
+const dynamo = new AWS.DynamoDB.DocumentClient();
+const tableName = process.env.TABLE_NAME || 'poc-items-node'
 
 /**
  * Provide an event that contains the following keys:
@@ -11,14 +12,12 @@ var dynamo = new AWS.DynamoDB.DocumentClient();
  *   - payload: a parameter to pass to the operation being performed
  */
 exports.handler = async (event, context) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+    //console.log('Received event:', JSON.stringify(event, null, 2));
 
     var body = JSON.parse(event.body);
 
     var operation = body.operation;
 
-    var tableName = process.env.TABLE_NAME || 'poc-items-node'
-    
     switch (operation) {
         case 'create':
             body.payload.TableName = tableName;

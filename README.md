@@ -108,7 +108,7 @@ _If jmeter is installed:_
 ### Test Script
 
 Run the following command after replacing the domain name with appropriate API gateway domain.
-This test script executes 1,000 requests against the api. 
+This test script executes 20,000 requests against the api over a period of about 15 minutes. 
 
 Check the correct location for the jmeter binary.
 
@@ -116,7 +116,7 @@ __Make sure to update the *Jdomain* parameter with the value of 'APIDomain' Key 
 
 ```
 
-~/Downloads/apache-jmeter-5.4.3/bin/jmeter -n -t tests/jmeter/setup/createapi-test.jmx  -Jdomain=xxxx.execute-api.us-west-2.amazonaws.com -Jthreads=50 -Jrampup=4 -Jduration=100 -Jiterations=20 -e -l tests/jmeter/runs/logs_$(date '+%Y%m%d%H%M%S').jtl -o tests/jmeter/runs/run_$(date '+%Y%m%d%H%M%S')
+~/Downloads/apache-jmeter-5.4.3/bin/jmeter -n -t tests/jmeter/setup/createapi-test.jmx  -Jdomain=xxxxx.execute-api.us-west-2.amazonaws.com -Jthreads=200 -Jrampup=0 -Jiterations=100 -JiterationDelay=10000 -e -l tests/jmeter/runs/logs_$(date '+%Y%m%d%H%M%S').jtl -o tests/jmeter/runs/run_$(date '+%Y%m%d%H%M%S')
 
 ```
 
@@ -159,7 +159,6 @@ Respond 'y' to next questions.
 ## Observations
 
  - Go runtime seems to give a little better performance than others, in terms of response times and throughput
- - Node runtime seems to perform better than Python.
  - AWS documentation on Go is significantly less than Python/Node.
  - Package size of Go runtime is large: ~ 6 MB, compared to a few hundred bytes for Python/Node. 
  
