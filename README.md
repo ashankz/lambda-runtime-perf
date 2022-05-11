@@ -165,7 +165,9 @@ Respond 'y' to next questions.
  
 Here are the stats. See '90th Perc', ‘Average’ and ‘Transactions/sec’ columns:
 
-![Performance run statistics](https://github.com/ashankz/lambda-runtime-perf/blob/main/tests/jmeter/images/testrun-20220314.png?raw=true)
+![Lambda duration comparison](https://github.com/ashankz/lambda-runtime-perf/blob/main/tests/jmeter/images/lambda-performance-comp_20220509.png?raw=true)
+
+![JMeter API performance run statistics](https://github.com/ashankz/lambda-runtime-perf/blob/main/tests/jmeter/images/testrun-20220314.png?raw=true)
 
  
 Performance tests were done with identical load structure and payload - using JMeter:
