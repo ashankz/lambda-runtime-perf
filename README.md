@@ -163,9 +163,11 @@ Respond 'y' to next questions.
  - Package size of Go runtime is large: ~ 6 MB, compared to a few hundred bytes for Python/Node. 
  
  
-Here are the stats. See '90th Perc', ‘Average’ and ‘Transactions/sec’ columns:
+Here are the stats from AWS cloudwatch Metrics: Lambda duration comparison
 
 ![Lambda duration comparison](https://github.com/ashankz/lambda-runtime-perf/blob/main/tests/jmeter/images/lambda-performance-comp_20220509.png?raw=true)
+
+JMeter API performance run statistics. See '90th Perc', ‘Average’ and ‘Transactions/sec’ columns:
 
 ![JMeter API performance run statistics](https://github.com/ashankz/lambda-runtime-perf/blob/main/tests/jmeter/images/testrun-20220314.png?raw=true)
 
